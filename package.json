@@ -1,0 +1,29 @@
+{
+    "name": "nodejs_mongo",
+    "version": "1.0.0",
+    "description": "project node js with mongodb",
+    "keywords": [
+        "node",
+        "js",
+        "react"
+    ],
+    "homepage": "https://github.com/NguyenTanNghi/node-js-with-mongodb#readme",
+    "bugs": {
+        "url": "https://github.com/NguyenTanNghi/node-js-with-mongodb/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/NguyenTanNghi/node-js-with-mongodb.git"
+    },
+    "license": "ISC",
+    "author": "Nguyen Tan Nghi",
+    "type": "commonjs",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "node server.js"
+    },
+    "dependencies": {
+        "express": "4.18.2"
+    }
+}
