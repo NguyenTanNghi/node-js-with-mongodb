@@ -12,7 +12,7 @@ app.set("view engine", "ejs");
 
 // config routes
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Hello World123!212");
 });
 app.get("/sample", (req, res) => {
     res.render("sample");
