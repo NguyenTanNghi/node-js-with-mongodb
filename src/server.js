@@ -1,9 +1,10 @@
 const express = require("express");
 const path = require("path");
-// import express from "express";
+require("dotenv").config();
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8081;
+const hostname = process.env.HOST_NAME || "localhost";
 
 // config view engine
 app.set("views", path.join(__dirname, "views"));
@@ -17,6 +18,6 @@ app.get("/sample", (req, res) => {
     res.render("sample");
 });
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
+app.listen(port, hostname, () => {
+    console.log(`Example app listening on http://${hostname}:${port}`);
 });
