@@ -10,7 +10,7 @@ const mysql = require("mysql2");
 //     password: process.env.DB_PASSWORD, //default: empty
 // });
 
-// connect to database pool
+// connect to database pool (nhanh hơn so với createConnection)
 const connection = mysql.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
