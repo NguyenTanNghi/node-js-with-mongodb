@@ -1,6 +1,8 @@
 const connection = require("../config/database");
-const getHomePage = (req, res) => {
-    return res.render("home");
+const { getAllUsers } = require("../services/CRUDService");
+const getHomePage = async (req, res) => {
+    const listUsers = await getAllUsers();
+    return res.render("home", { listUsers: listUsers });
 };
 const getSamplePage = (req, res) => {
     res.render("sample");
