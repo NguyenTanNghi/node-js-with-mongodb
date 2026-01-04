@@ -5,12 +5,23 @@ const getHomePage = (req, res) => {
 const getSamplePage = (req, res) => {
     res.render("sample");
 };
-const postCreateUser = (req, res) => {
-    console.log(req.body);
-    return res.send("Create new user");
+const postCreateUser = async (req, res) => {
+    let email = req.body.email;
+    let name = req.body.myname;
+    let city = req.body.city;
+
+    const [results, fields] = await connection.query(
+        "INSERT INTO Users (email, name, city) VALUES (?, ?, ?)",
+        [email, name, city]
+    );
+    return res.send("User created successfully!");
+};
+const getCreatePage = (req, res) => {
+    res.render("create");
 };
 module.exports = {
     getHomePage,
     getSamplePage,
     postCreateUser,
+    getCreatePage,
 };
