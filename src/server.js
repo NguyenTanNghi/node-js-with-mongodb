@@ -14,11 +14,6 @@ configViewEngine(app);
 // config routes
 app.use("/", webRouter); // tất cả đường link trong webRouter đều bắt đầu bằng "/"
 
-
-connection.query("select * from Users u", function (err, results, fields) {
-    console.log("Connected to the database. User data:", results);
-});
-
 app.listen(port, hostname, () => {
     console.log(`Example app listening on http://${hostname}:${port}`);
 });
