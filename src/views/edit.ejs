@@ -15,19 +15,20 @@
     </div>
     <div class="form-add-new">
         <form action="/update-user" method="post">
+            <input type="hidden" name="id" value="<%= user.id %>">
             <fieldset>
                 <legend>Update a user</legend>
                 <div class="input-group">
                     <label>Email: </label>
-                    <input type="text" name="email">
+                    <input type="text" name="email" value="<%= user.email %>">
                 </div>
                 <div class="input-group">
                     <label>Name: </label>
-                    <input type="text" name="myname">
+                    <input type="text" name="myname" value="<%= user.name %>">
                 </div>
                 <div class="input-group">
                     <label>City: </label>
-                    <input type="text" name="city">
+                    <input type="text" name="city" value="<%= user.city %>">
                 </div>
                 <div>
                     <button type="submit">Update</button>
