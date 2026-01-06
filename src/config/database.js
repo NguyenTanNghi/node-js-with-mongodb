@@ -10,7 +10,7 @@ const dbState = [
 
 const connection = async () => {
     try {
-        await mongoose.connect("mongodb://root:123456@localhost:27018");
+        await mongoose.connect(process.env.MONGO_URL);
         const state = Number(mongoose.connection.readyState);
         console.log(dbState.find((f) => f.value === state).label, "to db"); 
         console.log("Connected to MongoDB successfully");
