@@ -5,8 +5,10 @@ const {
     createUser,
     deleteUser,
 } = require("../services/CRUDService");
+const User = require("../models/user");
+
 const getHomePage = async (req, res) => {
-    const listUsers = await getAllUsers();
+    const listUsers = [];
     return res.render("home", { listUsers: listUsers });
 };
 const getSamplePage = (req, res) => {
@@ -17,7 +19,11 @@ const postCreateUser = async (req, res) => {
     let name = req.body.myname;
     let city = req.body.city;
 
-    const [results, fields] = await createUser(email, name, city);
+    await User.create({
+        email: email,
+        name: name,
+        city: city,
+    });
     return res.redirect("/");
 };
 const getCreatePage = (req, res) => {
