@@ -18,6 +18,9 @@ configViewEngine(app);
 // config routes
 app.use("/", webRouter); // tất cả đường link trong webRouter đều bắt đầu bằng "/"
 
+// test connect db
+connection();
+
 app.listen(port, hostname, () => {
     console.log(`Example app listening on http://${hostname}:${port}`);
 });
