@@ -19,8 +19,14 @@ configViewEngine(app);
 app.use("/", webRouter); // tất cả đường link trong webRouter đều bắt đầu bằng "/"
 
 // test connect db
-connection();
-
-app.listen(port, hostname, () => {
-    console.log(`Example app listening on http://${hostname}:${port}`);
-});
+// kết nối db và sau khi kết nối thành công thì mới chạy server
+(async () => {
+    try {
+        await connection();
+        app.listen(port, hostname, () => {
+            console.log(`Backend zero app listening on http://${hostname}:${port}`);
+        });
+    } catch (error) {
+        console.log(">>> Error connect to db: ", error);
+    }
+})();
