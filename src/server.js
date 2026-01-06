@@ -3,7 +3,7 @@ const express = require("express"); //commonjs
 const configViewEngine = require("./config/viewEngine");
 const webRouter = require("./routers/web");
 const connection = require("./config/database");
-const mongoose = require("mongoose");
+const Kitten = require("./models/Kitten");
 
 const app = express();
 const port = process.env.PORT || 8081;
@@ -19,14 +19,10 @@ configViewEngine(app);
 // config routes
 app.use("/", webRouter); // tất cả đường link trong webRouter đều bắt đầu bằng "/"
 
-const kittySchema = new mongoose.Schema({
-    name: String,
-});
-const Kitten = mongoose.model("Kitten", kittySchema);
-const cat = new Kitten({ name: "Hoi Dan IT Cat TEST" });
+// tạo mô hình và lưu document vào collection
+const cat = new Kitten({ name: "Hoi Dan IT Cat1232" });
 cat.save();
 
-// test connect db
 // kết nối db và sau khi kết nối thành công thì mới chạy server
 (async () => {
     try {
@@ -40,3 +36,4 @@ cat.save();
         console.log(">>> Error connect to db: ", error);
     }
 })();
+ 
