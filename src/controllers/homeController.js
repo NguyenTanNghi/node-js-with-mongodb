@@ -44,7 +44,7 @@ const postUpdateUser = async (req, res) => {
 };
 const postDeleteUser = async (req, res) => {
     let id = req.body.id;
-    const [results, fields] = await deleteUser(id);
+    await User.deleteOne({ _id: id });
     return res.redirect("/");
 };
 module.exports = {
