@@ -8,7 +8,7 @@ const {
 const User = require("../models/user");
 
 const getHomePage = async (req, res) => {
-    const listUsers = [];
+    const listUsers = await User.find({});
     return res.render("home", { listUsers: listUsers });
 };
 const getSamplePage = (req, res) => {
