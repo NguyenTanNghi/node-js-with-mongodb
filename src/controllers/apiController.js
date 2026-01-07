@@ -26,7 +26,7 @@ const putUsersAPI = async (req, res) => {
     let email = req.body.email;
     let name = req.body.myname;
     let city = req.body.city;
-    await User.updateOne(
+    let results = await User.updateOne(
         {
             _id: id,
         },
@@ -38,15 +38,15 @@ const putUsersAPI = async (req, res) => {
     );
     return res.status(200).json({
         errorCode: 0,
-        message: "User updated successfully",
+        data: results,
     });
 };
 const deleteUsersAPI = async (req, res) => {
     let id = req.body.id;
-    await User.deleteOne({ _id: id });
+    let results = await User.deleteOne({ _id: id });
     return res.status(200).json({
         errorCode: 0,
-        message: "User deleted successfully",
+        data: results,
     });
 };
 
