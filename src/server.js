@@ -4,10 +4,14 @@ const configViewEngine = require("./config/viewEngine");
 const webRouter = require("./routers/web");
 const apiRouter = require("./routers/api");
 const connection = require("./config/database");
+const fileUpload = require("express-fileupload");
 
 const app = express();
 const port = process.env.PORT || 8081;
 const hostname = process.env.HOST_NAME || "localhost";
+
+//  config file upload
+app.use(fileUpload());
 
 // config request body parser
 app.use(express.json());
