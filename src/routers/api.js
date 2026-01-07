@@ -16,4 +16,6 @@ routerAPI.get("/user", getUsersAPI);
 routerAPI.post("/user", postCreateUserAPI);
 routerAPI.put("/user", putUpdateUserAPI);
 routerAPI.delete("/user", deleteUserAPI);
+routerAPI.post("/file", postUploadSingleFileApi);
+routerAPI.post("/files", postUploadMultipleFilesAPI);
 module.exports = routerAPI;
