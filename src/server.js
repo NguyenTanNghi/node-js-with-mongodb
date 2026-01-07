@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express"); //commonjs
 const configViewEngine = require("./config/viewEngine");
 const webRouter = require("./routers/web");
+const apiRouter = require("./routers/api");
 const connection = require("./config/database");
 
 const app = express();
@@ -17,6 +18,7 @@ configViewEngine(app);
 
 // config routes
 app.use("/", webRouter); // tất cả đường link trong webRouter đều bắt đầu bằng "/"
+app.use("/v1/api", apiRouter);
 
 // kết nối db và sau khi kết nối thành công thì mới chạy server
 (async () => {
@@ -31,4 +33,3 @@ app.use("/", webRouter); // tất cả đường link trong webRouter đều b�
         console.log(">>> Error connect to db: ", error);
     }
 })();
- 
