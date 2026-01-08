@@ -8,6 +8,15 @@ const createCustomerService = async (customerData) => {
         return null;
     }
 };
+const createArrayCustomerService = async (customersArray) => {
+    try {
+        let result = await Customer.insertMany(customersArray);
+        return result;
+    } catch (error) {
+        return null;
+    }
+};
 module.exports = {
     createCustomerService,
+    createArrayCustomerService,
 };
