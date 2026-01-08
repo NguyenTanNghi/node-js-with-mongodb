@@ -34,9 +34,16 @@ module.exports = {
     postCreateArrayCustomerAPI: async (req, res) => {
         let arrayCustomers = req.body.customers; // [{}, {}, {}]
         let customers = await createArrayCustomerService(arrayCustomers);
-        return res.status(200).json({
-            EC: 0,
-            data: customers,
-        });
+        if (customers) {
+            return res.status(200).json({
+                EC: 0,
+                data: customers,
+            });
+        } else {
+            return res.status(500).json({
+                EC: -1,
+                data: customers,
+            });
+        }
     },
 };
