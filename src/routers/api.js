@@ -39,4 +39,20 @@ routerAPI.put("/customers", putUpdateCustomerAPI);
 routerAPI.delete("/customers", deleteACustomerAPI);
 routerAPI.delete("/customers-many", deleteArrayCustomerAPI);
 
+// Query
+routerAPI.get("/info", (req, res) => {
+    return res.status(200).json({
+        message: "This is Query API",
+        data: req.query,
+    });
+});
+
+// Params
+routerAPI.get("/info/:name/:address", (req, res) => {
+    return res.status(200).json({
+        message: "This is Params API",
+        data: req.params,
+    });
+});
+
 module.exports = routerAPI;
