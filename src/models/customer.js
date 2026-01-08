@@ -17,7 +17,8 @@ const customerSchema = new mongoose.Schema(
         timestamps: true, // tự động thêm createdAt và updatedAt
     }
 );
-customerSchema.plugin(mongoose_delete); // tự động thêm các phương thức xoá mềm vào schema
+// tự động thêm các phương thức xoá mềm vào schema, overrideMethods: "all" để ghi đè tất cả các phương thức mặc định của mongoose, bao gồm find, findOne, count, etc.
+customerSchema.plugin(mongoose_delete, { overrideMethods: "all" }); 
 
 const Customer = mongoose.model("customer", customerSchema);
 
