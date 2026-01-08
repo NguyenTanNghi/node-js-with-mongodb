@@ -3,7 +3,9 @@ const {
     createCustomerService,
     createArrayCustomerService,
     getAllCustomerService,
+    putUpdateCustomerService,
 } = require("../services/customerService");
+const { put } = require("../routers/web");
 
 module.exports = {
     postCreateCustomerAPI: async (req, res) => {
@@ -52,6 +54,21 @@ module.exports = {
         return res.status(200).json({
             EC: 0,
             data: customers,
+        });
+    },
+    putUpdateCustomerAPI: async (req, res) => {
+        let { id, name, address, phone, email, description } = req.body;
+        let result = await putUpdateCustomerService({
+            id,
+            name,
+            address,
+            phone,
+            email,
+            description,
+        });
+        return res.status(200).json({
+            EC: 0,
+            data: result,
         });
     },
 };
