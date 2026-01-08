@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const mongoose_delete = require("mongoose-delete");
 
 const customerSchema = new mongoose.Schema(
     {
@@ -14,8 +15,10 @@ const customerSchema = new mongoose.Schema(
     },
     {
         timestamps: true, // tự động thêm createdAt và updatedAt
-    } 
+    }
 );
+customerSchema.plugin(mongoose_delete); // tự động thêm các phương thức xoá mềm vào schema
+
 const Customer = mongoose.model("customer", customerSchema);
 
 module.exports = Customer;
