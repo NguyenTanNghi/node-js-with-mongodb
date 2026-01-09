@@ -24,3 +24,12 @@ customerSchema.plugin(mongoose_delete, { overrideMethods: "all" });
 const Customer = mongoose.model("customer", customerSchema);
 
 module.exports = Customer;
+
+
+// => 1 Customer  n Projects 
+// => 1 Project  n Task 
+// => n Project  n Users 
+
+// 1 Customer có thể có nhiều Project liên quan đến nó, 1 Project chỉ thuộc về 1 Customer
+// 1 Project có thể có nhiều Task liên quan đến nó, 1 Task chỉ thuộc về 1 Project
+// 1 User có thể tham gia vào nhiều Project, 1 Project có thể có nhiều User tham gia vào nó

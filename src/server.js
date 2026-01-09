@@ -29,16 +29,16 @@ app.use("/v1/api", apiRouter); // tất cả đường link trong apiRouter đ�
 (async () => {
     try {
         // using mongoose to connect to database
-        // await connection();
+        await connection();
 
         // using mongodb native driver to connect to database
-        const url = process.env.DB_HOST_WITH_DRIVER;
-        const client = new MongoClient(url);
-        const dbName = process.env.DB_NAME;
-        await client.connect();
-        console.log("Connected successfully to server");
-        const db = client.db(dbName);
-        const collection = db.collection("customers");
+        // const url = process.env.DB_HOST_WITH_DRIVER;
+        // const client = new MongoClient(url);
+        // const dbName = process.env.DB_NAME;
+        // await client.connect();
+        // console.log("Connected successfully to server");
+        // const db = client.db(dbName);
+        // const collection = db.collection("customers");
         // collection.insertOne({ name: "John", address: "Highway 37" }) ;
         // collection.insertOne({ name: "John", address: "Highway 38" });
         // console.log(">>> find = ", await collection.find({name: "John"}).toArray());
