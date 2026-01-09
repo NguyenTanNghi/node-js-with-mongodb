@@ -66,6 +66,6 @@ app.use("/v1/api", apiRouter); // tất cả đường link trong apiRouter đ�
         console.log(">>> Error connect to db: ", error);
     }
 })();
-// mongoose cung cấp các tính năng như schema, model, validation, middleware, trong khi mongodb native driver cung cấp các phương thức cơ bản để kết nối và thao tác với cơ sở dữ liệu.
-// mongoose phù hợp cho các dự án phức tạp cần quản lý dữ liệu chặt chẽ, trong khi mongodb native driver phù hợp cho các dự án đơn giản hoặc khi cần tối ưu hiệu suất.
 // mongoose phải quy định schema trước khi lưu trữ dữ liệu, trong khi mongodb native driver linh hoạt hơn trong việc lưu trữ dữ liệu không theo cấu trúc cố định.
+// khi Create: mongoose khi truyền dư dữ liệu thì chỉ lấy những trường cần thiết có trong model project
+// khi Create: mongodb native driver khi truyền dư dữ liệu thì sẽ lưu tất cả dữ liệu vào trong document
