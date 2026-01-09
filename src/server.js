@@ -38,7 +38,10 @@ app.use("/v1/api", apiRouter); // tất cả đường link trong apiRouter đ�
         await client.connect();
         console.log("Connected successfully to server");
         const db = client.db(dbName);
-        const collection = db.collection("documents");
+        const collection = db.collection("customers");
+        // collection.insertOne({ name: "John", address: "Highway 37" });
+        // collection.insertOne({ name: "John", address: "Highway 38" });
+        console.log(">>> find = ", await collection.find({name: "John"}).toArray());
 
         app.listen(port, hostname, () => {
             console.log(
