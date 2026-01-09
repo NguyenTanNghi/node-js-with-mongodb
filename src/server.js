@@ -39,9 +39,23 @@ app.use("/v1/api", apiRouter); // tất cả đường link trong apiRouter đ�
         console.log("Connected successfully to server");
         const db = client.db(dbName);
         const collection = db.collection("customers");
-        // collection.insertOne({ name: "John", address: "Highway 37" });
+        // collection.insertOne({ name: "John", address: "Highway 37" }) ;
         // collection.insertOne({ name: "John", address: "Highway 38" });
-        console.log(">>> find = ", await collection.find({name: "John"}).toArray());
+        // console.log(">>> find = ", await collection.find({name: "John"}).toArray());
+
+        // ở đây là ví dụ về cách chèn một tài liệu có cấu trúc phức tạp hơn với đối tượng lồng nhau mà mongodb native driver hỗ trợ
+        // mongoose cũng hỗ trợ nhưng cần định nghĩa schema trước
+        // collection.insertOne({
+        //     name: "John",
+        //     address: {
+        //         city: {
+        //             name: "New York",
+        //             code: "NY",
+        //         },
+        //         street: "5th Avenue",
+        //         building: "10B",
+        //     },
+        // });
 
         app.listen(port, hostname, () => {
             console.log(
@@ -52,3 +66,6 @@ app.use("/v1/api", apiRouter); // tất cả đường link trong apiRouter đ�
         console.log(">>> Error connect to db: ", error);
     }
 })();
+// mongoose cung cấp các tính năng như schema, model, validation, middleware, trong khi mongodb native driver cung cấp các phương thức cơ bản để kết nối và thao tác với cơ sở dữ liệu.
+// mongoose phù hợp cho các dự án phức tạp cần quản lý dữ liệu chặt chẽ, trong khi mongodb native driver phù hợp cho các dự án đơn giản hoặc khi cần tối ưu hiệu suất.
+// mongoose phải quy định schema trước khi lưu trữ dữ liệu, trong khi mongodb native driver linh hoạt hơn trong việc lưu trữ dữ liệu không theo cấu trúc cố định.
