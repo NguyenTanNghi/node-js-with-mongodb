@@ -1,4 +1,5 @@
 const { uploadSingleFile } = require("../services/fileService");
+
 const {
     createCustomerService,
     createArrayCustomerService,
@@ -56,7 +57,7 @@ module.exports = {
         let name=req.query.name;
         let results = null;
         if (limit && page) {
-            results = await getAllCustomerService(+limit, +page, name);
+            results = await getAllCustomerService(+limit, +page, name, req.query);
         } else {
             results = await getAllCustomerService();
         }
