@@ -19,7 +19,15 @@ const {
 const {
     postCreateProject,
     getAllProject,
+    updateProject,
+    deleteProject,
 } = require("../controllers/projectController");
+const {
+    getAllTask,
+    postCreateTask,
+    updateTask,
+    deleteTask,
+} = require("../controllers/taskController");
 
 routerAPI.get("/", (req, res) => {
     res.send("Hello from API");
@@ -43,8 +51,17 @@ routerAPI.put("/customers", putUpdateCustomerAPI);
 routerAPI.delete("/customers", deleteACustomerAPI);
 routerAPI.delete("/customers-many", deleteArrayCustomerAPI);
 
+// Projects CRUD
 routerAPI.post("/projects", postCreateProject);
 routerAPI.get("/projects", getAllProject);
+routerAPI.put("/projects", updateProject);
+routerAPI.delete("/projects", deleteProject);
+
+// Tasks CRUD
+routerAPI.get("/tasks", getAllTask);
+routerAPI.post("/tasks", postCreateTask);
+routerAPI.put("/tasks", updateTask);
+routerAPI.delete("/tasks", deleteTask);
 
 // Query
 routerAPI.get("/info", (req, res) => {
