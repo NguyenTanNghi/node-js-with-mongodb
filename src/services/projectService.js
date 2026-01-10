@@ -1,4 +1,5 @@
 const Project = require("../models/project");
+const aqp = require("api-query-params");
 module.exports = {
     createProject: async (data) => {
         // khi truyền dư dữ liệu thì chỉ lấy những trường cần thiết có trong model project
@@ -17,5 +18,17 @@ module.exports = {
             return result;
         }
         return null;
+    },
+    getProject: async (queryString) => {
+        const page = queryString.page;
+        const { filter, limit, population } = aqp(queryString);
+        delete filter.page;
+        let offset = (page - 1) * limit;
+        let result = await Project.find(filter)
+            .populate(population)
+            .skip(offset)
+            .limit(limit)
+            .exec();
+        return result;
     },
 };
