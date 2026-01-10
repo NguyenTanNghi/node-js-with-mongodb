@@ -8,10 +8,37 @@ const {
     deleteACustomerService,
     deleteArrayCustomerService,
 } = require("../services/customerService");
+const Joi = require("joi");
 
 module.exports = {
     postCreateCustomerAPI: async (req, res) => {
         let { name, address, phone, email, description } = req.body;
+
+        const schema = Joi.object({
+            name: Joi.string().min(3).max(30).required(),
+            address: Joi.string().min(3).max(100).required(),
+            phone: Joi.string()
+                .pattern(/^[0-9]+$/)
+                .min(10)
+                .max(15)
+                .required(),
+            email: Joi.string().email().required(),
+            description: Joi.string().max(500).allow(""),
+        });
+
+        const { error } = schema.validate({
+            name,
+            address,
+            phone,
+            email,
+            description,
+        });
+        if (error) {
+            return res.status(400).json({
+                EC: -1,
+                message: error.details[0].message,
+            });
+        }
 
         let imageUrl = "";
 
@@ -54,10 +81,15 @@ module.exports = {
     getAllCustomersAPI: async (req, res) => {
         let limit = req.query.limit;
         let page = req.query.page;
-        let name=req.query.name;
+        let name = req.query.name;
         let results = null;
         if (limit && page) {
-            results = await getAllCustomerService(+limit, +page, name, req.query);
+            results = await getAllCustomerService(
+                +limit,
+                +page,
+                name,
+                req.query
+            );
         } else {
             results = await getAllCustomerService();
         }
