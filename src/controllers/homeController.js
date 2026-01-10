@@ -16,7 +16,6 @@ const postCreateUser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.myname;
     let city = req.body.city;
-
     const [results, fields] = await createUser(email, name, city);
     return res.redirect("/");
 };
