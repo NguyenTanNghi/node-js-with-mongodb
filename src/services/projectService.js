@@ -25,6 +25,16 @@ module.exports = {
             let newResult = await myProject.save();
             return newResult;
         }
+        if (data.type === "ADD-TASKS") {
+            let myProject = await Project.findById(data.projectId).exec();
+            for (let i = 0; i < data.taskArr.length; i++) {
+                if (!myProject.tasks.includes(data.taskArr[i])) {
+                    myProject.tasks.push(data.taskArr[i]);
+                }
+            }
+            let result = await myProject.save();
+            return result;
+        }
         return null;
     },
     getProject: async (queryString) => {
