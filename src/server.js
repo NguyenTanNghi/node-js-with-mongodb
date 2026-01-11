@@ -9,8 +9,8 @@ const { MongoClient } = require("mongodb");
 
 const app = express();
 const port = process.env.PORT || 8081;
-const hostname = process.env.HOST_NAME || "localhost";
-
+// const hostname = process.env.HOST_NAME || "localhost";
+const hostname = "0.0.0.0";
 //  config file upload
 app.use(fileUpload());
 
